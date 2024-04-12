@@ -30,4 +30,16 @@ public class Dentist {
         this.emailAddress = emailAddress;
         this.specialization = specialization;
     }
+
+    @Override
+    public String toString() {
+        return "Dentist{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", specialization='" + specialization + '\'' +
+                '}';
+    }
 }

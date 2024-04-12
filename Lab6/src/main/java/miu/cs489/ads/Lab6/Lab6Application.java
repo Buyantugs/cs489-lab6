@@ -57,5 +57,21 @@ public class Lab6Application implements CommandLineRunner {
 		Appointment appointment6 = iAppointmentService.save(new Appointment(LocalDateTime.now(),"Confirmed",patient4,surgery2,dentist3));
 		iAppointmentService.getAllAppointment().forEach(System.out::println);
 
+		System.out.println("Before update firstName of a patient");
+		// Update patient
+		patient4.setFirstName("Buyantugs");
+		Patient updatedPatient = iPatientService.update(patient4.getId(), patient4);
+		System.out.println("Updated Patient: " + updatedPatient);
+
+		iAppointmentService.getAllAppointment().forEach(System.out::println);
+
+		Dentist dentist4 = iDentistService.save(new Dentist("Robin","Plevin","999-777-1234","face@gmail.com","Oral Surgeon"));
+		iDentistService.getAllDentists().forEach(System.out::println);
+
+		// Delete patient
+		iDentistService.delete(dentist4.getId());
+		iDentistService.getAllDentists().forEach(System.out::println);
+		System.out.println("Patient deleted successfully.");
+
 	}
 }
