@@ -31,6 +31,8 @@ public class Dentist {
         this.specialization = specialization;
     }
 
+
+
     @Override
     public String toString() {
         return "Dentist{" +

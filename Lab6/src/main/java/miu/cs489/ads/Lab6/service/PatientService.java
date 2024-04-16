@@ -3,6 +3,9 @@ package miu.cs489.ads.Lab6.service;
 import miu.cs489.ads.Lab6.module.Patient;
 import miu.cs489.ads.Lab6.repo.PatientRepo;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Service
 public class PatientService implements IPatientService{
@@ -13,6 +16,14 @@ public class PatientService implements IPatientService{
 
     public Patient save(Patient patient){
         return patientRepo.save(patient);
+    }
+
+    public List<Patient> getAllPatients(){
+        return patientRepo.findAll();
+    }
+
+    public Patient getPatient(Integer id){
+        return patientRepo.findById(id).orElse(null);
     }
 
     public Patient update(Integer id, Patient updatedPatient){
@@ -41,4 +52,11 @@ public class PatientService implements IPatientService{
         // Delete the patient with the given ID
         patientRepo.deleteById(id);
     }
+
+    public List<Patient> searchPatientsByFirstName(String firstName) {
+        return patientRepo.findByFirstNameContainingIgnoreCase(firstName);
+        //return null;
+    }
+
+
 }
